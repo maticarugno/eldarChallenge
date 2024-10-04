@@ -27,7 +27,7 @@ public class EldarChallengeApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		MenuInteractivo menu = new MenuInteractivo(personaService, tarjetaService, tasaService);
-		menu.iniciar();
+		//MenuInteractivo menu = new MenuInteractivo(personaService, tarjetaService, tasaService);
+		//menu.iniciar();
 	}
 }

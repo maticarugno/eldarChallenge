@@ -1,11 +1,11 @@
 package com.example.eldarchallenge.service;
 
-import com.example.eldarchallenge.dto.CardHolder;
+import com.example.eldarchallenge.dto.Persona;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface PersonaService {
-    void crearPersona(CardHolder cardHolder);
-    CardHolder getPersonaPorNombreCompleto(String nombreCompleto);
-    CardHolder getPersonaPorDni(String dni);
+    void crearPersona(Persona persona);
+    Persona getPersonaPorNombreCompleto(String nombreCompleto);
+    Persona getPersonaPorDni(String dni);
 }

@@ -31,17 +31,17 @@ public class Tarjeta {
     @NotBlank(message = "El cvv es obligatorio")
     private String cvv;
 
-    @NotNull(message = "El card holder es obligatorio")
+    @NotNull(message = "La persona es obligatoria")
     @ManyToOne
     @JoinColumn(name = "dni")
-    private CardHolder cardHolder;
+    private Persona persona;
 
-    public Tarjeta(String numeroTarjeta, MarcasTarjetas marca, LocalDate fechaVencimiento, String cvv, CardHolder cardHolder) {
+    public Tarjeta(String numeroTarjeta, MarcasTarjetas marca, LocalDate fechaVencimiento, String cvv, Persona persona) {
         FieldValidator.validarVacios(numeroTarjeta, cvv);
         this.numeroTarjeta = numeroTarjeta;
         this.marca = marca;
         this.fechaVencimiento = fechaVencimiento;
         this.cvv = cvv;
-        this.cardHolder = cardHolder;
+        this.persona = persona;
     }
 }

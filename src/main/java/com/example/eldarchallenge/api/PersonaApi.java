@@ -1,6 +1,6 @@
 package com.example.eldarchallenge.api;
 
-import com.example.eldarchallenge.dto.CardHolder;
+import com.example.eldarchallenge.dto.Persona;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,5 +12,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("personas")
 public interface PersonaApi {
     @PostMapping()
-    ResponseEntity<String> crearPersona(@Valid @RequestBody CardHolder cardHolder);
+    ResponseEntity<String> crearPersona(@Valid @RequestBody Persona persona);
 }

@@ -1,6 +1,6 @@
 package com.example.eldarchallenge.console;
 
-import com.example.eldarchallenge.dto.CardHolder;
+import com.example.eldarchallenge.dto.Persona;
 import com.example.eldarchallenge.dto.Tarjeta;
 import com.example.eldarchallenge.enums.MarcasTarjetas;
 import com.example.eldarchallenge.exceptions.DataNotFoundException;
@@ -9,7 +9,6 @@ import com.example.eldarchallenge.exceptions.MarcaNoReconocidaException;
 import com.example.eldarchallenge.service.PersonaService;
 import com.example.eldarchallenge.service.TarjetaService;
 import com.example.eldarchallenge.service.TasaService;
-import jakarta.validation.ConstraintViolationException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -84,7 +83,7 @@ public class MenuInteractivo {
 
         try {
             LocalDate fechaNacimiento = LocalDate.parse(fechaNac, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            CardHolder persona = new CardHolder(dni, nombre, apellido, fechaNacimiento, email);
+            Persona persona = new Persona(dni, nombre, apellido, fechaNacimiento, email);
             personaService.crearPersona(persona);
             System.out.println("Persona registrada con éxito.");
         }catch (DataNotFoundException | InvalidFieldException ex) {
@@ -109,7 +108,7 @@ public class MenuInteractivo {
 
         try {
             LocalDate fechaVencimiento = LocalDate.parse(fechaVenc, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            CardHolder titular = personaService.getPersonaPorNombreCompleto(nombreCompleto);
+            Persona titular = personaService.getPersonaPorNombreCompleto(nombreCompleto);
             Tarjeta tarjeta = new Tarjeta(numeroTarjeta, MarcasTarjetas.fromString(marca), fechaVencimiento, cvv, titular);
             tarjetaService.crearTarjeta(tarjeta);
             System.out.println("Tarjeta registrada con éxito.");

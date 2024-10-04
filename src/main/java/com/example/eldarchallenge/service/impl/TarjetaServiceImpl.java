@@ -22,13 +22,13 @@ public class TarjetaServiceImpl implements TarjetaService {
     @Override
     public void crearTarjeta(Tarjeta tarjeta) {
         tarjetaRepository.save(tarjeta);
-        mailService.sendMail(tarjeta.getCardHolder().getEmail(), "Nueva Tarjeta",
+        mailService.sendMail(tarjeta.getPersona().getEmail(), "Nueva Tarjeta",
                 tarjeta.getCvv() + tarjeta.getNumeroTarjeta());
     }
 
     @Override
     public List<Tarjeta> getTarjetasPorDni(String dni) {
-        return tarjetaRepository.findByCardHolderDni(dni);
+        return tarjetaRepository.findByPersonaDni(dni);
     }
 
     @Override

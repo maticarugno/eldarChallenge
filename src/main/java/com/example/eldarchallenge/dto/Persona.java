@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @Entity
-public class CardHolder {
+public class Persona {
 
     @NotBlank(message = "El dni es obligatorio")
     @Id
@@ -31,7 +31,7 @@ public class CardHolder {
     @NotBlank(message = "El email es obligatorio")
     private String email;
 
-    public CardHolder(String dni, String nombre, String apellido, LocalDate fechaNacimiento, String email) {
+    public Persona(String dni, String nombre, String apellido, LocalDate fechaNacimiento, String email) {
         FieldValidator.validarVacios(dni, nombre, apellido, email);
         this.dni = dni;
         this.nombre = nombre;

@@ -26,7 +26,7 @@ public class CompraServiceImpl implements CompraService {
         tarjetaService.validarTarjetaCvv(tarjeta.getNumeroTarjeta(), compra.getCvvIngresado());
         validarCompra(compra);
         compraRepository.save(compra);
-        mailService.sendMail(tarjeta.getCardHolder().getEmail(), "Compra realizada",
+        mailService.sendMail(tarjeta.getPersona().getEmail(), "Compra realizada",
                 "La compra se realizo correctamente.");
     }
 

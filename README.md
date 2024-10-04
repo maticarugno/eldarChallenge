@@ -2,11 +2,11 @@
 
 ## Resolucion:
 
-### Ejericio 1: 
+### Ejercio 1: 
 Para probarlo local hay que descomentar las dos lineas de codigo en EldarChallengeApplication.
 Al levantar la app, se podra navegar por el menu interactivo.
 
-### Ejericio 2:
+### Ejercio 2:
 La app esta desplegada en https://eldar-challenge-599a9eb4b432.herokuapp.com/
 
 Dejo los curls de los cuatro endpoints solicitados:
@@ -48,3 +48,30 @@ Dejo los curls de los cuatro endpoints solicitados:
 - Consultar la tasa de una tarjeta sobre un importe:
         
   - curl --location 'https://eldar-challenge-599a9eb4b432.herokuapp.com/tasa/calcular?marca=amex&importe=1000'
+
+### Ejercicio 3
+
+El patron de diseño que elegiria es el Observer. De esta manera, cuando una camara modifique su imagen podra notificar 
+al sistema sobre el cambio, sin que este esté constantemente consultado el estado de la camara, disminuyendo al minimo el ancho de banda utilizado.
+
+
+### Ejercio 4
+
+Cree el siguiente algoritmo para resolver el ejercicio. Para el gasto total de cada dia
+hago la sumatoria de los gastos de los d dias anteriores, lo divido por d para obtener el promedio,
+multiplico por dos como pide el ejercicio y aumento la cantidad de avisos si el gasto del dia supera ese limite
+```
+public int calcular(List<Integer> gastos, int cantDias){
+        int cantAvisos = 0;
+        for (int i = 0; i < gastos.size(); i++){
+            if (i+1 > cantDias){
+                int sumaGastoDias = gastos.subList(i-cantDias, i).stream().reduce(0, Integer::sum);
+                int limiteAviso = (sumaGastoDias/cantDias) * 2;
+                if (gastos.get(i) >= limiteAviso){
+                    cantAvisos++;
+                }
+            }
+        }
+        return cantAvisos;
+    }
+```
